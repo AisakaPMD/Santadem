@@ -4,6 +4,7 @@ $docu = 'users.csv';
 $doccontent = file_get_contents($docu);
 $doclines = explode("\n", $doccontent);
 array_shift($doclines); // Remove headers
+if(empty(trim($doclines[-1]))){ array_pop($doclines); }
 
 
 function randomOffset($initial, $arrlen){
