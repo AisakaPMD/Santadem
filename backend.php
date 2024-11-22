@@ -38,7 +38,6 @@ function ckicetemail($mail){
     $index = 0;
     foreach ($doclines as $line) {
         $lineelems = explode(",", $line);
-        print("DEBUG: {$lineelems[2]} <=> {$mail} \n");
         if(strtolower($lineelems[2]) == strtolower($mail) ||
             preg_match("/^(.*)".$mail."(.*)$/iu", $lineelems[2])){
             return $index;
