@@ -15,8 +15,12 @@ if($target === -1){
     header('Location: browse.php');
     die(0);
 }
-$lst = explode(";", $target[5]);
-
+// $lst = explode(";", $target[5]);
+$target_file = $target[6] . '.lst';
+$lst = file_get_contents($target_file);
+if($lst === false){
+    $lst = $target[1] . " n'a pas encore donné ses préférences.";
+}
 
 ?>
 
@@ -56,9 +60,7 @@ $lst = explode(";", $target[5]);
     <h2>Coucou <?php echo $profile; ?> !<br>Cette année, on te propose d'offrir un cadeau à <em title="<?php echo $target[1] . ' ' . $target[0]; ?>"><?php echo $target[1]; ?></em>, voici ses préférences :</h2>
 <div id="kdos">
     <?php
-    foreach ($lst as $kdo){
-        echo '<h3>'.$kdo.'</h3>';
-    }
+    echo '<h3>'.$lst.'</h3>';
     ?>
 </div>
 </body>

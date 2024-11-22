@@ -30,3 +30,17 @@ function jsuiski($mwa){
     }
     return -1;
 }
+
+function ckicetemail($mail){
+    global $doclines;
+    $index = 0;
+    foreach ($doclines as $line) {
+        $lineelems = explode(",", $line);
+        if(strtolower($lineelems[2]) == strtolower($mail) ||
+            preg_match("/^(.*)".$mail."(.*)$/iu", $lineelems[2])){
+            return $index;
+        }
+        $index++;
+    }
+    return -1;
+}
