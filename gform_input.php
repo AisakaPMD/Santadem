@@ -14,7 +14,7 @@ foreach ($_POST as $key => $value) {
     $ui = ckicetemail($key);
     if($ui !== -1){
         $monid = explode(',', $doclines[$ui])[6];
-        file_put_contents($monid . '.lst', $value);
+        file_put_contents('lists/' . $monid . '.lst', $value);
         // print("INFO: Done\n");
     }else{
         // print("WARN: User $key not found!\n");

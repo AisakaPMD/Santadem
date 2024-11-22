@@ -16,7 +16,7 @@ if($target === -1){
     die(0);
 }
 // $lst = explode(";", $target[5]);
-$target_file = $target[6] . '.lst';
+$target_file = 'lists/' . $target[6] . '.lst';
 $lst = file_get_contents($target_file);
 if($lst === false){
     $lst = $target[1] . " n'a pas encore donné ses préférences.";
