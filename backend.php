@@ -4,7 +4,8 @@ $docu = 'users.csv';
 $doccontent = file_get_contents($docu);
 $doclines = explode("\n", $doccontent);
 array_shift($doclines); // Remove headers
-if(empty(trim($doclines[-1]))){ array_pop($doclines); }
+
+if(empty(trim($doclines[sizeof($doclines)-1]))){ array_pop($doclines); }
 
 
 function randomOffset($initial, $arrlen){
@@ -37,6 +38,7 @@ function ckicetemail($mail){
     $index = 0;
     foreach ($doclines as $line) {
         $lineelems = explode(",", $line);
+        print("DEBUG: {$lineelems[2]} <=> {$mail} \n");
         if(strtolower($lineelems[2]) == strtolower($mail) ||
             preg_match("/^(.*)".$mail."(.*)$/iu", $lineelems[2])){
             return $index;
